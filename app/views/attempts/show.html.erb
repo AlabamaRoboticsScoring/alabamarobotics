@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @attempt.team %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @attempt.course %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @attempt.points %>
+</p>
+
+<p>
+  <strong>Completion time:</strong>
+  <%= @attempt.completion_time %>
+</p>
+
+<p>
+  <strong>Judge name:</strong>
+  <%= @attempt.judge_name %>
+</p>
+
+<%= link_to 'Edit', edit_attempt_path(@attempt) %> |
+<%= link_to 'Back', attempts_path %>
