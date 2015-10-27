@@ -24,12 +24,15 @@ RSpec.describe ChallengesController, type: :controller do
   # Challenge. As you add validations to Challenge, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { 
+      "name": "Challenge 1", 
+      "duration?": "true"
+    }
   }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  # let(:invalid_attributes) {
+  #   skip("Add a hash of attributes invalid for your model")
+  # }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -87,30 +90,34 @@ RSpec.describe ChallengesController, type: :controller do
       end
     end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved challenge as @challenge" do
-        post :create, {:challenge => invalid_attributes}, valid_session
-        expect(assigns(:challenge)).to be_a_new(Challenge)
-      end
+    # context "with invalid params" do
+    #  it "assigns a newly created but unsaved challenge as @challenge" do
+    #    post :create, {:challenge => invalid_attributes}, valid_session
+    #    expect(assigns(:challenge)).to be_a_new(Challenge)
+    #  end
 
-      it "re-renders the 'new' template" do
-        post :create, {:challenge => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
+    #  it "re-renders the 'new' template" do
+    #    post :create, {:challenge => invalid_attributes}, valid_session
+    #    expect(response).to render_template("new")
+    #  end
+    # end
   end
 
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          "name": "Challenge 2",
+          "duration?": "false"
+        }
       }
 
       it "updates the requested challenge" do
         challenge = Challenge.create! valid_attributes
         put :update, {:id => challenge.to_param, :challenge => new_attributes}, valid_session
         challenge.reload
-        skip("Add assertions for updated state")
+        expect(challenge.name).to match("Challenge 2")
+        expect(challenge.duration?).to be false
       end
 
       it "assigns the requested challenge as @challenge" do
@@ -126,6 +133,7 @@ RSpec.describe ChallengesController, type: :controller do
       end
     end
 
+=begin
     context "with invalid params" do
       it "assigns the challenge as @challenge" do
         challenge = Challenge.create! valid_attributes
@@ -139,6 +147,7 @@ RSpec.describe ChallengesController, type: :controller do
         expect(response).to render_template("edit")
       end
     end
+=end
   end
 
   describe "DELETE #destroy" do
