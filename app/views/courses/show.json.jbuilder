@@ -1,1 +1,1 @@
-json.extract! @course, :id, :challenge_id, :pin, :created_at, :updated_at
+json.extract! @course, :id, :challenge_id, :pin, :created_at, :updated_at, :name
