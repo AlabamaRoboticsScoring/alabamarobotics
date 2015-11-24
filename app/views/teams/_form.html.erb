@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :age_group %><br>
-    <%= f.number_field :age_group %>
+    <%= f.select :age_group, Team.age_groups.keys.to_a %>
   </div>
   <div class="field">
     <%= f.label :school %><br>
