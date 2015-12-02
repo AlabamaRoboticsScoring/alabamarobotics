@@ -3,6 +3,18 @@ Rails.application.routes.draw do
   resources :teams
   resources :courses
   resources :challenges
+
+  # Session controller
+
+  get     "session"                   => "session#login"
+  post    "session"                   => "session#authenticate"
+  delete  "session"                   => "session#logout"
+  get     "session/attempt"           => "session#new_attempt"
+  get     "session/attempt/confirm"   => "session#confirm"
+  post    "session/attempt"           => "session#create_attempt"
+  get     "session/team/:id"          => "session#view_team"
+  get     "session/winners"           => "session#winners"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
