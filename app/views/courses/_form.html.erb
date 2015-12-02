@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :challenge_id %><br>
-    <%= f.text_field :challenge_id %>
+    <%= f.collection_select :challenge_id, Challenge.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :pin %><br>

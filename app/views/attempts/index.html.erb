@@ -20,7 +20,7 @@
     <% @attempts.each do |attempt| %>
       <tr>
         <td><%= attempt.team %></td>
-        <td><%= attempt.course %></td>
+        <td><%= attempt.course.name %></td>
         <td><%= attempt.points %></td>
         <td><%= attempt.completion_time %></td>
         <td><%= attempt.judge_name %></td>

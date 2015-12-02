@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :team_id %><br>
-    <%= f.text_field :team_id %>
+    <%= f.collection_select :team_id, Team.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
+    <%= f.collection_select :course_id, Course.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :points %><br>
-    <%= f.number_field :points %>
+    <%= f.number_field :points, in: 0..100 %>
   </div>
   <div class="field">
     <%= f.label :completion_time %><br>
