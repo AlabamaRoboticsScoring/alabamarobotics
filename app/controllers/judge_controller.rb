@@ -40,7 +40,7 @@ class JudgeController < ApplicationController
     reject = params[:reject].eql? '1'
 
     if !reject and @attempt.save
-      redirect_to '/session/attempt', notice: 'Attempt was successfully created.'
+      redirect_to '/judge/attempt', notice: 'Attempt was successfully created.'
     else
       render 'new_attempt'
     end
