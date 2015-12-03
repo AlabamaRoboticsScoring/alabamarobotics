@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<%= form_tag('/session/attempt/confirm', method: :get, class: 'form-horizontal') do -%>
+  <% if @attempt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attempt.errors.count, "error") %> 
+          prohibited this attempt from being saved:</h2>
+
+      <ul>
+      <% @attempt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label_tag 'team', nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= select_tag('team_id', options_from_collection_for_select(
+        Team.all, 'id', 'name', @attempt.team_id), class: 'form-control') %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'course', nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= select_tag('course_id', options_from_collection_for_select(
+        Course.all, 'id', 'name', @attempt.course_id), class: 'form-control') %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'points', nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= number_field_tag 'points', 
+        @attempt.points, in: 0..100, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'completion_time', nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= datetime_field_tag 'completion_time', 
+        @attempt.completion_time, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'judge_name', nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= text_field_tag :judge_name, 
+        @attempt.judge_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= submit_tag "Submit", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end -%>
