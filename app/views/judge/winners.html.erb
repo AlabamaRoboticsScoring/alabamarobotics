@@ -1,0 +1,28 @@
+<h1>Listing Winners</h1>
+
+<table class = "table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age group</th>
+      <th>School</th>
+      <th>Score</th>
+      <th>Latest High Score</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.age_group %></td>
+        <td><%= team.school %></td>
+        <td><%= team.score[:total] %></td>
+        <td><%= team.score[:latest] %></td>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Team', new_team_path %>

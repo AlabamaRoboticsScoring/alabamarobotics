@@ -17,8 +17,9 @@ class Team < ActiveRecord::Base
     # in: challenges => [attempts], out: challenges => attempt
     maxes = challenges.map{ |challenge, attempts|
       attempts.sort_by{ |a| [-a.points, a.completion_time] }.first
-    }
-    {total: maxes.reduce(0){ |t,a| t + a.points }, maxes: maxes}
+    }.sort_by{|a| a.completion_time}.reverse
+    latest = maxes.max_by(&:completion_time).completion_time unless maxes.empty? else nil
+    {total: maxes.reduce(0){ |t,a| t + a.points }, maxes: maxes, latest: latest}
   end
 
   def to_s 

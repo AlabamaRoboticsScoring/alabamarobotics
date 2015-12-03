@@ -52,6 +52,13 @@ class JudgeController < ApplicationController
 
   # GET /session/winners
   def winners
+    unless params[:age_group].blank?
+      t = Team.where(age_group: params[:age_group])
+    else
+      t = Team.all
+    end
+    
+    @teams = t.sort_by{|t| [-t.score[:total], t.score[:latest]] }
   end
 
 end
