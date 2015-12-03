@@ -33,9 +33,9 @@
     <!-- all of the rest of the bar gets toggled -->
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
         <!-- hide this link if not logged in -->
-        <li><a href="/session/attempt">Start Judging</a></li>
-        <!-- hide this dropdown if we are not admin -->
+        <li><a href="/judge/attempt">Start Judging</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
               aria-haspopup="true" aria-expanded="false">
@@ -48,14 +48,27 @@
             <li><a href='/challenges'>Challenges</a></li>
           </ul>
         </li>
+      <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/session">Log In</a></li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
+  <% if notice %>
+    <p class="bg-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="bg-warning"><%= alert %></p>
+  <% end %>
 <!--
   <div class="jumbotron">
     <h1>Alabamarobotics </h1>

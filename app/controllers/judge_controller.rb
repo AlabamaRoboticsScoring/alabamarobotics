@@ -1,17 +1,11 @@
-class SessionController < ApplicationController
+class JudgeController < ApplicationController
+
+  before_action :authenticate_user!, except: [:home]
+
+  # GET /
+  def home
+  end
   
-  # GET /session
-  def login
-  end
-
-  # POST /session
-  def authenticate
-  end
-
-  # DELETE /session
-  def logout
-  end
-
   # GET /session/attempt
   def new_attempt
     @attempt = Attempt.new

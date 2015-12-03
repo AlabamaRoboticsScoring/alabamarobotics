@@ -1,5 +1,7 @@
 class AttemptsController < ApplicationController
   before_action :set_attempt, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :require_admin, except: [:index, :show]
 
   # GET /attempts
   # GET /attempts.json

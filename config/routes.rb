@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
+  root "judge#home"
+
   resources :attempts
   resources :teams
   resources :courses
   resources :challenges
 
-  # Session controller
+  # devise routes for auth
+  devise_for :users
+  resources :users
 
-  get     "session"                   => "session#login"
-  post    "session"                   => "session#authenticate"
-  delete  "session"                   => "session#logout"
-  get     "session/attempt"           => "session#new_attempt"
-  get     "session/attempt/confirm"   => "session#confirm"
-  post    "session/attempt"           => "session#create_attempt"
-  get     "session/team/:id"          => "session#view_team"
-  get     "session/winners"           => "session#winners"
+  # Session controller
+  get     "judge"                   => "judge#login"
+  post    "judge"                   => "judge#authenticate"
+  delete  "judge"                   => "judge#logout"
+  get     "judge/attempt"           => "judge#new_attempt"
+  get     "judge/attempt/confirm"   => "judge#confirm"
+  post    "judge/attempt"           => "judge#create_attempt"
+  get     "judge/team/:id"          => "judge#view_team"
+  get     "judge/winners"           => "judge#winners"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

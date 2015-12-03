@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :require_admin, except: [:index, :show]
 
   # GET /teams
   # GET /teams.json
