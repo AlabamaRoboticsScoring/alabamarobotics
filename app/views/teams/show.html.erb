@@ -1,3 +1,4 @@
+<% score = @team.score %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -19,7 +20,37 @@
   <strong>School:</strong>
   <%= @team.school %>
 </p>
+<p>
+  <strong>Score:</strong>
+  <%= score[:total] %>
+</p>
 
+<h3>Highest Scores</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Points</th>
+      <th>Completion time</th>
+      <th>Judge name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% score[:maxes].each do |attempt| %>
+      <tr>
+        <td><%= attempt.course.name %></td>
+        <td><%= attempt.points %></td>
+        <td><%= attempt.completion_time %></td>
+        <td><%= attempt.judge_name %></td>
+        <td><%= link_to 'Show', attempt %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>All Attempts</h3>
 <table class= "table table-striped">
   <thead>
     <tr>
