@@ -6,19 +6,61 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-   <meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  -->
 
 </head>
 <body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <!-- group navbar toggle and brand for mobile -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" 
+          data-toggle="collapse" data-target="#navbar-collapse-1" 
+          aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Alabama Robotics</a>
+    </div>
 
+    <!-- all of the rest of the bar gets toggled -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- hide this link if not logged in -->
+        <li><a href="/session/attempt">Start Judging</a></li>
+        <!-- hide this dropdown if we are not admin -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+              aria-haspopup="true" aria-expanded="false">
+            Admin Functions <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href='/attempts'>Attempts</a></li>
+            <li><a href='/teams'>Teams</a></li>
+            <li><a href='/courses'>Courses</a></li>
+            <li><a href='/challenges'>Challenges</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/session">Log In</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <div class="container">
+<!--
   <div class="jumbotron">
     <h1>Alabamarobotics </h1>
   </div>
+-->
 <%= yield %>
 </div>
 </body>
