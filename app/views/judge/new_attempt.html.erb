@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= form_tag('/session/attempt/confirm', method: :get, class: 'form-horizontal') do -%>
+<%= form_tag('/judge/attempt/confirm', method: :get, class: 'form-horizontal') do -%>
   <% if @attempt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@attempt.errors.count, "error") %> 
