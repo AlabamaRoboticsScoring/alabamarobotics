@@ -36,7 +36,18 @@
       <% if user_signed_in? %>
         <!-- hide this link if not logged in -->
         <li><a href="/judge/attempt">Start Judging</a></li>
-        <li><a href="/judge/winners">View Winners</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+              aria-haspopup="true" aria-expanded="false">
+            View Winners <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href='/judge/winners'>Overall</a></li>
+            <li><a href='/judge/winners?age_group=0'>Elementary</a></li>
+            <li><a href='/judge/winners?age_group=1'>Middle</a></li>
+            <li><a href='/judge/winners?age_group=2'>High</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
               aria-haspopup="true" aria-expanded="false">
